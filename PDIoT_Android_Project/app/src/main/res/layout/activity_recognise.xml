@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".recognition.RecogniseActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#AAFFFFFF"/>
+
+
+    <TextView
+        android:id="@+id/sign_up_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="24dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_horizontal"
+        android:text="■ Live Recognition"
+        android:textColor="#170200"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        app:layout_constraintBottom_toTopOf="@+id/graphs_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/activity_margin_content"
+        android:layout_marginRight="@dimen/activity_margin_content"
+        android:orientation="vertical"
+        android:id="@+id/graphs_container"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_title"
+        app:layout_constraintBottom_toTopOf="@+id/RecogButtons"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/respeck_graphs"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/thingy_graphs">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="   Respeck Live Data"/>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/respeck_chart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+
+            android:id="@+id/thingy_graphs"
+
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@id/respeck_graphs"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="   Thingy Live Data"/>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/thingy_chart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/divide_line"
+        app:layout_constraintTop_toBottomOf="@+id/graphs_container"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_height="3dp"
+        android:background="@color/cardview_dark_background" />
+
+
+    <LinearLayout
+        android:id="@+id/RecogButtons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="@dimen/activity_margin_content"
+        android:layout_marginRight="@dimen/activity_margin_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/graphs_container"
+        app:layout_constraintBottom_toTopOf="@id/buttons_container2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ToggleButton
+            android:id="@+id/RespeckRecog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/input"
+            android:textOff="🔲 Respeck Off"
+            android:textOn="✅ Respeck On" />
+
+        <ToggleButton
+            android:id="@+id/ThingyRecog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+
+            android:layout_weight="1"
+            android:background="@drawable/input"
+            android:textOff="🔲 Thingy Off"
+            android:textOn="✅ Thingy On" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttons_container2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="@dimen/activity_margin_content"
+        android:layout_marginRight="@dimen/activity_margin_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/RecogButtons"
+        app:layout_constraintBottom_toTopOf="@id/recog_count_up_timer_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/start_recognising_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/input"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/green"
+            android:text="Start Recog." />
+
+        <Button
+            android:id="@+id/stop_recognising_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/input"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/red"
+            android:text="Stop Recog." />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="▲ STOP RECOG. will automatically save the result"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/recog_count_up_timer_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttons_container2"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <TextView
+        android:id="@+id/recog_count_up_timer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="Elapsed time : "
+        app:layout_constraintTop_toBottomOf="@+id/hint"
+        app:layout_constraintBottom_toTopOf="@+id/recogImg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/recognise_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recogImg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/recogniser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recognition Result :  "
+            android:textSize="20dp"
+            android:textColor="#170200"
+            />
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/recogImg"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recog_count_up_timer_text"
+        app:layout_constraintBottom_toTopOf="@+id/recognise_text"
+        app:srcCompat="@drawable/ic_ellipsis" />
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
